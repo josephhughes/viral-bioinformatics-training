@@ -12,7 +12,7 @@
 
 In this practical, we will be checking our reference assembly from the previous session. We will use tools to generate summary statistics of the depth and breadth of the coverage across the genome, coverage plots, and visualisation of our assembly using tools such as Tablet and weeSAM. Later sessions of the course will cover how to call the consensus sequence and variants.
 
-<img src="AlignmentStatistics_files/tablet.png" width="768" style="display: block; margin: auto;" />
+<img src="AlignmentStatistics_files/Tablet.png" width="768" style="display: block; margin: auto;" />
 
 <img src="AlignmentStatistics_files/weeSAM.png" width="768" style="display: block; margin: auto;" />
 
