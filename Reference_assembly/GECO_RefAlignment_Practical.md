@@ -22,9 +22,9 @@
 
 ## 1: SARS-CoV-2 Reference Alignment
 
-In this practical we will be performing reference alignment of SARS-CoV-2 (Severe acute respiratory syndrome coronavirus 2) samples to create consensus sequences for a number of samples. This will be done for both MinION and Illumina data sets using a different approach (shotgun versus amplicon) for each technology.
+In this practical we will be performing reference alignment of SARS-CoV-2 (Severe acute respiratory syndrome coronavirus 2) samples to create consensus sequences for a number of samples. This will be done for both MinION and Illumina data sets using a different approaches (shotgun versus amplicon).
 
-A quick reminder of useful terminal commands: navigating through folders using ```cd```, list folder contents using ```ls```, making directories using ```mkdir```, deleting files using ```rm```, entering bioinformatics commands, and using **TAB Completion** which makes entering long filenames and paths easy.
+A quick reminder of useful terminal commands: navigating through folders using ```cd```, list folder contents using ```ls```, making directories using ```mkdir```, deleting files using ```rm```, entering bioinformatics commands using **TAB Completion** makes entering long filenames and paths easier.
 
 During the presentation, you have learnt about the FASTQ format, SAM and BAM files. In this practical, you will learn: how to align illumina reads to reference sequences to call a consensus sequence; how to adapt this for handling the large number of overlapping amplicons used in the ARTIC SARS-CoV-2 protocols, and using a consensus caller specifically designed for viral samples; how to apply a similar approach to illumina amplicon data.
 
@@ -36,7 +36,7 @@ cd  dont_enter_this_command_its_just_an_example
 **NB:** commands are presented within code blocks - some are long and stretch off the page within a scrollpane.
 
 ## 1.1: Illumina shotgun
-In shotgun sequencing, the reads are randomly sheared into different size using either using an enzyme or by virbration. This results in a number of short fragments that are subsequently sequenced using Illumina.
+In shotgun sequencing, the reads are randomly sheared into different size using either an enzyme or by vibration. This results in a number of short fragments that are subsequently sequenced using Illumina.
 In most cases, you need sufficient starting material to achieve this. Here we will use as an example, SARS2 that has been cultured up in Vero cells before sequencing.
 
 
@@ -55,10 +55,8 @@ Breaking this command down:
 
 * **--q 25** = trim the 3' end of the reads remove nucleotides less
 than Phred Quality 25
-* **--length 50** = after adapter and quality trimming, remove reads less
-than 50bp in length
-* **--paired** = the names of the paired fastq files to analyze in order
-(Read 1 then Read 2)
+* **--length 50** = after adapter and quality trimming, remove reads less than 50bp in length
+* **--paired** = the names of the paired fastq files to analyze in order (Read 1 then Read 2)
 
 ### 1.1.2: Aligning your reads to a reference genome with BWA
 
@@ -238,11 +236,11 @@ Breaking this command down, there are two parts:
 	* **-A** = count orphan reads (reads whose pair did not map)
 	* **-d 0** = override the maximum depth (default is 8000 which is typically too low for viruses)
 	* **-Q 0** = minimum base quality, 0 essentially means all the data
-2. ivar [consensus](https://andersen-lab.github.io/ivar/html/manualpage.html) - this calls the consensus - the output of the samtools mpileup command is piped '|' directly into ivar
-	* -p CVR2058 = prefix with which to name the output file
-	* -t 0.4 = the minimum frequency threshold that a base must match to be used in calling the consensus base at a position. In this case, an ambiguity code will be used if more than one base is > 40% (0.4). See [ivar manual]
+2. ivar [consensus](https://andersen-lab.github.io/ivar/html/manualpage.html) - this calls the consensus - the output of the samtools mpileup command is piped `|` directly into ivar
+	* **-p CVR2058** = prefix with which to name the output file
+	* **-t 0.4** = the minimum frequency threshold that a base must match to be used in calling the consensus base at a position. In this case, an ambiguity code will be used if more than one base is > 40% (0.4). See [ivar manual]
 
-By default, ivar consensus uses a minimum depth (-m) of 10 and a minimum base quality (-q) of 20 to call the consensus; these defaults can be changed by using the appropriate arguments. If a genome position has a depth less than the minimum, an 'N' base will be used in the consensus sequence by default.
+By default, ivar consensus uses a minimum depth (**-m**) of 10 and a minimum base quality (**-q**) of 20 to call the consensus; these defaults can be changed by using the appropriate arguments. If a genome position has a depth less than the minimum, an 'N' base will be used in the consensus sequence by default.
 
 
 ## 1.2: MinION Tutorial
@@ -388,7 +386,7 @@ We can count the number of reads that have mapped to the reference sequence (dis
 samtools view -c -F2308 barcode06.sorted.bam
 ```
 
-**NB:** Alternatively, you could use the command ```samtools flagstats barcode06.sorted.bam``` which you learnt previously.
+**NB:** Alternatively, you could use the command ```samtools flagstats barcode06.sorted.bam``` .
 
 If you compare the mapped read count to that from the normalised (downsampled) BAM file, you should see less mapped reads due to the normalisation step:
 
@@ -696,7 +694,7 @@ Another approach when using [mafft](https://mafft.cbrc.jp/alignment/software/) i
 
 ## 4: SARS-CoV-2 Group Practical
 
-In this session, we will be working on some more Illumina paired end read data. The FASTQ data was downloaded from the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser) (ENA), and there are 4 samples in total (the samples are not related to one another), with R1 and R2 FASTQ files for each:
+In this session, we will be working on some more Illumina paired end read data. The FASTQ data was downloaded from the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser) (ENA), and there are 4 samples in total in ```~/SARS-CoV-2/Group/``` (the samples are not related to one another), with R1 and R2 FASTQ files for each:
 
 * ERR9105817 - ARTIC primer version 4.1
 * ERR9731990 - ARTIC primer version 4.1
@@ -715,15 +713,14 @@ Your task is to work as a group in the breakout rooms to analyse these samples. 
 * Report the number of mapped reads
 * Trim the ARTIC primers
 * Call a consensus sequence
-* Use Pangolin to assign a lineage
-* Use SPEAR to call the mutations
+
 
 This is a flexible session, and a chance to collate all the steps that you have learnt onto a single sample(s).
 
 As a group you could:
 
 * Analyse a sample each and collate the results. As there are only 4 samples (and groups will likely be larger than 4) - multiple people could analyse a single sample and check you get the same results
-* Write a bash script to process the sample automatically. Remember all the steps to analyse a sample are the same, it is just the input/output names that are changing. Completed example bash scripts will be uploaded here after the session.
+* Write a bash script to process the sample automatically. Remember all the steps to analyse a sample are the same, it is just the input/output names that are changing. 
 
 
 
