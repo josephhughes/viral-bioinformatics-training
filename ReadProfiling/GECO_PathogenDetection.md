@@ -86,23 +86,36 @@ firefox SRR1748193_kaiju.out.html
 Kraken is a kmer based tool for metagenomics, it can give you an indication of what is in your sample by analysing your FASTQ reads and classifying them based on any viral specific kmers that they contain.
 
 We are going to investigate the same SRR1748193 sample to find out if there are any viruses in it. First, we will run kraken against the Mini-Kraken database which is quick:
+
 ```
-kraken --preload --db /home2/db/kraken/MiniDB/ --paired CSF_S1_R1_val_1.fq CSF_S1_R2_val_2.fq --threads 4 > kraken_output.txt
+kraken2 --db ~/db/kraken2/virus/ --quick --output SRR1748193_kraken.out \
+--report SRR1748193_report.txt \
+--paired SRR1748193_pass_1_val_1.fq.gz SRR1748193_pass_2_val_2.fq.gz
+```
  
-This will create a kraken output file called kraken_output.txt, which contains the taxonomic
-assignment of each read pair.
-It is not very human readable/informative, so we will use two different ways to visualise/inspect the kraken results.
-3. Visualisation
-First we shall use kraken-report to generate a summary report of what is potentially in the sample:
-    kraken --preload --db /home2/db/kraken/MiniDB/ --paired
- CSF_S1_R1_val_1.fq CSF_S1_R2_val_2.fq --threads 10 >
- kraken_output.txt
- 
- kraken-report -db /home2/db/kraken/MiniDB kraken_output.txt >
- kraken_report.txt
-We can now inspect this report by opening up the text file:
-more kraken_report.txt
-Question – what viruses are potentially in the sample?
-An alternative visualisation is to view the result in a krona plot:
+This will create a kraken output file called ```SRR1748193_kraken.out```, which contains the taxonomic assignment of each read pair.
+The file ```SRR1748193_report.txt``` provide a report with the number of reads mapping at each taxonomic level but it is not very human readable, so we will use Krona again to visualise/inspect the kraken results.
+
+#### 4.2.1 Visualisation
+
+First we use a perl script to convert the kraken report into a format that is readable by krona:
+
+```
+~/Programs/kraken2-translate.pl SRR1748193_report.txt > SRR1748193_kraken.krona.txt
+```
+
+Now, we run the ```ktImportText``` command for creating the krona plot:
+
+```
+ktImportText -o SRR1748193_kraken.out.html SRR1748193_kraken.krona.txt 
+```
+
+Now we can view the result in a krona plot:
+
+```
 firefox kraken_output.html
-This will open the Krona plot in the firefox web browser. Have a play with the Krona plot, try expanding bacteria and viruses, and exploring through the taxonomy.
+```
+
+This will open the Krona plot in the firefox web browser. Have a play with the Krona plot, try expanding viruses, and exploring through the taxonomy.
+
+**Question** Has kraken detected the same viruses as Kaiju?
