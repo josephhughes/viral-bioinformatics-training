@@ -78,6 +78,117 @@ This command means we are building this tree with 1000 ultrafast bootstrap repli
 You'll notice a lot of new files appear in your directory. The ones we're most interested in are the `.contree` file, which we'll use to visualise our tree, and the `.log` file which contains all the information that appeared on the terminal window.
 
 
+## Tree visualisation
+
+Now you've built a tree, it's time to visualise it. We'll be using FigTree. FigTree is designed as a graphical viewer of phylogenetic trees and as a program for producing publication-ready figures. It can be downloaded from: http://tree.bio.ed.ac.uk/software/figtree/ 
+
+Type `figtree` in the terminal to open the program.
+
+Click  File → Open → select the file `omicron_subset_countries_aligned.contree`
+
+When prompted, enter `bootstrap` as the label name.
+
+Your tree will appear on the screen! However, it needs a bit of manipulation to be in its most useful form.
+
+Along the side tabs, go to Trees. Root the tree at the midpoint and order the nodes by increasing order.
+
+**What initial observations can you make from the tree topology?**
+
+Now go to Node labels, and display the bootstrap values. 
+
+**What is the purpose of bootstrap values?**
+
+It often isn't useful to see ALL the bootstrap values - we just want to know which branches have strong support and which don't. Therefore, we can hide the lower values and only show values of interest. 
+
+To do this, click `ctrl+f`. A search bar will open at the top of the figure. Search for bootstrap values of at least 90. Click `Node` in selection mode, then click the `annotate` paperclip. This will bring up a box. Select `bootstrap` from the drop down list, leave the second box blank, and apply. 
+
+This will remove any bootstrap values less than 90. 
+
+**Look at the bootstrap values on the tree now. What do they tell us?**
+
+Spend some time now playing about with the settings in FigTree to make an aesthetically pleasing tree! Make sure to keep it open when you're done, as we'll be going back to this.
 
 
+## Extracting metadata
 
+We can add additional information to our tree. Sometimes the sequence IDs contain useful information that we want to extract. 
+
+Take a look at the format of the sequence IDs in your fasta file.
+
+**What information might we want to extract from the sequence IDs?**
+
+To extract this information manually would take ages! Instead, we can write a pipeline in R to process this for us.
+
+Open RStudio. The next steps will all be done in there.
+
+If it isn't already, you'll need to install the library `seqinr`. You can do this by going to Tools-> Install Packages and entering `seqinr`. 
+
+You'll need to import your fasta file. This first involves knowing where it is. You can find this out using the command `file.choose()`. This will open a window where you can select your alignment file. The full path to this will appear in the console in R studio. 
+
+To import and store your alignment in R, run:
+`alignment<-seqinr::read.alignment("PATH_TO_FILE", format = "fasta")` replacing the PATH_TO_FILE with the path you generated in the last step. 
+
+Running this command should result in an element called `alignment` appearing in the environment tab in Rstudio. 
+
+We're now going to create a table listing the country for each sequence. First, we'll create a table with all the sequence IDs and an empty country column ready to fill with data:
+
+`m<-data.frame(ID = alignment$nam, country = NA)` 
+
+This table should now have appeared under the alignment in your environment tab! 
+
+You should have seen from looking at the sequence IDs that the information in the ID is separated by `/`s, with the country being the first element. We can therefore write some code to split the ID by the `/` and extraxt the first element:
+
+`m$country<-sapply(strsplit(m$ID, "/"), "[", 1)` 
+
+If you click on table `m` in your environment tab, you should now see that the country column has been filled in! 
+
+We now want to save this table in a form that can be used by FigTree to annotate our tree. This is tab delimited text. To save this:
+
+`write.table(m, file = "PATH_TO_DIRECTORY/omicron_subset_countries.txt", sep = "\t", row.names = FALSE)` 
+
+Replacing the PATH_TO_DIRECTORY with the full file path to your analysis directory (one step up from the file path we generated last time!).
+
+If we check in our directory, we should now see the `.txt` file!
+
+## Annotating the tree
+
+If we go back to our FigTree tree, we can now annotate it with the metadata file we just created! We do this by going to File->Import annotations and selecting the txt file we just made. 
+
+We can now colour our tips by country! In the side tab, go to Tip labels and colour by country. 
+
+Again, play around until you have a tree you're happy with. 
+
+When you've finalised your tree, you can export it by File->Export X where X is the file type. 
+
+Alternatively, you can try to annotate by different metadata!
+
+## Additional activity: Extracting alternate metadata
+
+Go back to RStudio and try to extract some other useful metadata!
+
+First, try extracting the year for each sequence. 
+
+Most of the code will be the same as you ran before, but think about the element of the ID you want to extract! Hint: The working code will be at the end of this document if you need assistance!
+
+**Annotate your tree in FigTree with tips coloured by year**
+
+It might also be useful to colour tips by country of interest - e.g. colour sequences from the Philippines one colour, and other countries another colour. 
+
+You could do this by editing the country `.txt` file you made manually in excel. Or we can practice some R skills!
+
+There are a few ways of doing this, but to save writing additional code, we can start with the same code we ran before to extract the countries.
+
+Before we save the table, we want to convert any country that doesn't say `Philippines` to `Other`.
+
+To do this, we need to find which entries do not say `Philippines`. For this we use the `!=` operator, meaning 'not equal to'. We then need to tell R which positions these entries are in the table (their row numbers), and tell it to change these row entries to 'Other':
+
+`m$country[which(m$country != "Philippines")]<-"Other"`
+
+Check table `m` to make sure this has changed, then save the file!
+
+**Annotate your tree in FigTree with tips colourd by PHL/Other**
+
+Code for year colouring: 
+
+`m<-data.frame(ID = alignment$nam, year = NA)`
+`m$year<-sapply(strsplit(m$ID, "/"), "[", 3)`
