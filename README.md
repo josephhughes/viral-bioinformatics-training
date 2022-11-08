@@ -1,6 +1,6 @@
 # [GECO Viral Bioinformatics training](https://github.com/josephhughes/viral-bioinformatics-training)
 * Monday 21st - Friday 25th November 2022 - Manila, Philippines
-* Practical adapted from [Richard Orton's tutorial](https://github.com/WCSCourses/ViralBioinfAsia2022/blob/main/Modules/SARS-CoV-2.md) 
+
 
 ## Practicals
 
