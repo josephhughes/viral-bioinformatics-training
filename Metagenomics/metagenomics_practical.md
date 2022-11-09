@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Following on from the [*De Novo* Assembly Practical]() we will use the same set of pangolin 
+Following on from the [*De Novo* Assembly Practical](https://github.com/josephhughes/viral-bioinformatics-training/blob/main/Denovo_assembly/denovo_practical.md) we will use the same set of pangolin 
 sequencing reads that we previously processed for this metagenomic practical.
 
 
@@ -236,7 +236,7 @@ the COVID-19 pandemic, and were of quite low quality (what was your longest cont
 Among other viruses identified by the metagenomic analysis there were few traces of SARS-related coronavirus sequences
 in the lung samples of two of the animals (sample runs SRR10168377 and SRR10168378).
 
-The subsampled read datasets that you assembled in the [*De Novo* Assembly Practical]() only contained reads 
+The subsampled read datasets that you assembled in the [*De Novo* Assembly Practical](https://github.com/josephhughes/viral-bioinformatics-training/blob/main/Denovo_assembly/denovo_practical.md) only contained reads 
 matching to the coronavirus genome, that's why all your contigs should be from that genome.
 
 - How long is an average coronavirus genome and how does that compare to your contigs' length?
@@ -279,7 +279,7 @@ We have already assessed that the quality of the coronavirus reads was fairly lo
 original set we analysed just based on the assembled contig length. Now that we have a fully assembled 
 'reference' genome subsequently published in the papers above, we can properly assess the contig 
 quality of our assembly and compare this between assembling methods, using a tool called 
-[metaQuast]().
+[metaQuast](https://academic.oup.com/bioinformatics/article/32/7/1088/1743987).
 
 The reference pangolin CoV genome we're going to use is called MP789 and a fasta file
 of the whole genome sequence can be found in the `metagenomics_data` directory. 
