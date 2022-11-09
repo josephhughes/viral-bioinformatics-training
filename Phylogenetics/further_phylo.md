@@ -13,7 +13,7 @@ Once you have your tree and the collection date associated with each sequence, y
 
 Tempest needs a tree and a set of dates to run.
 
-Check the metadata file `~/Phylogenetics/AFb_C1_dates.txt` and make a note of the format the dates are written in.
+Check the metadata file `~/Phylogenetics/AF1b_C1_dates.txt` and make a note of the format the dates are written in.
 
 Open tempest and, when prompted, select the rabies tree in the phylogenetics folder `~/Phylogenetics/AF1b_C1_aligned.fasta.contree`. 
 
