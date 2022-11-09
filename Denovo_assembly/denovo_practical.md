@@ -102,7 +102,7 @@ To save time, we have downloaded these for you and subsampled\* them to aid down
 
 You can copy these from the `denovo_data` directory into your newly made `denovo_assembly` directory.
 
-📝 See how we used other sra toolkit modules for the subsampling step in [Extended material]().
+📝 See how we used other sra toolkit modules for the subsampling step in [Extended material](#extended-material).
 
 ## Processing the reads
 
@@ -150,7 +150,7 @@ To keep things tidy you might want to keep quality reports in a separate subdire
 One very important sequencing read processing step is called trimming. That's where 
 we remove the adapters (or partial adapter sequences) from the reads. 
 
-Software like [Trim Galore]() make this task very easy, since it automatically detects 
+Software like [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) make this task very easy, since it automatically detects 
 the type of adapters present in the reads and clears them for you.
 
 You only need to tell the software whether the reads are paired-end and provide the file names, e.g.:
@@ -260,7 +260,7 @@ Try at least two different k-mer sizes with ABySS.
 - Could you try a much lower or much higher k-mer size? How would this affect the assembly?
 
 
-
+<br>
 
 ## Extended Material
 
