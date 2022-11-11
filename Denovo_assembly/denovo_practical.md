@@ -1,7 +1,27 @@
-# *De Novo* Assembly Practical 
+# [GECO Viral Bioinformatics training](https://github.com/josephhughes/viral-bioinformatics-training)
+* Monday 21st - Friday 25th November 2022 - Manila, Philippines
+
+## Contents
+
+* [3.2: *De Novo* Assembly Tutorial](#32-de-novo-assembly-tutorial)
+	+ [3.2.1: Introduction](#321-introduction)
+	+ [3.2.2: Retrieving the sequencing reads](#322-retrieving-the-sequencing-reads)
+	+ [3.2.3: Processing the reads](#323-processing-the-reads)
+		+ [sequencing read files](#sequencing-read-files)
+		+ [read quality](#read-quality)
+		+ [trimming](#trimming)
+	+ [3.2.4: *De Novo* Assembly](#324-de-novo-assembly)
+		+ [SPAdes](#spades)
+		+ [ABySS](#abyss)
+	+ [3.2.5: Extended Material](#325-extended-material)
 
 
-## Introduction
+
+# 3.2: *De Novo* Assembly Tutorial 
+
+
+## 3.2.1: Introduction
+
 In this practical we will explore how to make a *de novo* assembly from sequencing reads (illumina paired-end reads will be used).
 
 Since we won't be sequencing our own samples in this course, we will use existing, publicly available reads.
@@ -35,7 +55,7 @@ For the purpose of the course we will focus on the 2 (most interesting) experime
 - How many sequencing runs does each experiment have and what are their accessions (should start with 'SRR')?
 
 
-## Retrieving the sequencing reads
+## 3.2.2: Retrieving the sequencing reads
 
 ❗ Before we get started, it is crucial to keep the directories where you'll be running the analysis as
 tidy as possible. 
@@ -87,7 +107,7 @@ Let's break this down:
 
 - `--split-3` splits the reads into forward and reverse read files for paired end reads (are our reads paired-end?)
 	
-		- the 3rd file would include any singleton reads (if there are any)
+the 3rd file would include any singleton reads (if there are any)
 
 ❗ If you don't know how a module works, always use the `--help` option, 
 e.g.
@@ -100,13 +120,13 @@ this will show you how to use the commands as well as all available options and 
 On a fast internet connection it takes approximately 30 minutes to download the files of each run.
 To save time, we have downloaded these for you and subsampled\* them to aid downstream analysis.
 
-You can copy these from the `denovo_data` directory into your newly made `denovo_assembly` directory.
+You can copy these from the `/home/manager/GECO_course_data/Denovo_assembly` directory into your newly made `denovo_assembly` directory.
 
 📝 See how we used other sra toolkit modules for the subsampling step in [Extended material](#extended-material).
 
-## Processing the reads
+## 3.2.3: Processing the reads
 
-Before we start assembling to our heart's contempt, let's have a good look at the data. 
+Before we start assembling to our heart's content, let's have a good look at the data. 
 
 ### sequencing read files
 
@@ -166,7 +186,7 @@ trim_galore --paired SRR10168377_pass_1_sub.fastq SRR10168377_pass_2_sub.fastq
 - Is there any output file you might want to move to the *reports* subdirectory?
 
 
-## *De novo* assembly
+## 3.2.4: *De novo* assembly
 
 Now that we have retrieved, explored and trimmed our sequencing reads it is time to assemble!
 
@@ -262,7 +282,7 @@ Try at least two different k-mer sizes with ABySS.
 
 <br>
 
-## Extended Material
+## 3.2.5: Extended Material
 
 In the *de novo* assembly practical the sequencing read datasets have been 
 subsampled to reduce computing time. This was not done randomly, rather the retained

@@ -1,12 +1,26 @@
-# Metagenomics Practical
+# [GECO Viral Bioinformatics training](https://github.com/josephhughes/viral-bioinformatics-training)
+* Monday 21st - Friday 25th November 2022 - Manila, Philippines
 
-## Introduction
+## Contents
 
-Following on from the [*De Novo* Assembly Practical](https://github.com/josephhughes/viral-bioinformatics-training/blob/main/Denovo_assembly/denovo_practical.md) we will use the same set of pangolin 
+* [3.3: Metagenomics Tutorial](#33-metagenomics-tutorial)
+	+ [3.3.1: Introduction](#321-introduction)
+	+ [3.3.2: Kraken2: reads metagenomics](#332-kraken2-reads-metagenomics)
+		+ [Visualise results with Krona](#visualise-results-with-krona)
+	+ [3.3.3: DIAMOND: contig metagenomics](#333-diamond-contig-metagenomics)
+	+ [3.3.4: *De Novo* Assembly and Metagenomics Combined Practical](#334-de-novo-assembly-and-metagenomics-combined-practical)
+		+ [Final task](#final-task)
+
+
+# 3.3: Metagenomics Tutorial
+
+## 3.3.1: Introduction
+
+Following on from the [*De Novo* Assembly Tutorial](https://github.com/josephhughes/viral-bioinformatics-training/blob/main/Denovo_assembly/denovo_practical.md) we will use the same set of pangolin 
 sequencing reads that we previously processed for this metagenomic practical.
 
 
-## Kraken2: reads metagenomics
+## 3.3.2: Kraken2: reads metagenomics
 
 We will start with one of the most popular tools for classifying metagenomic reads: [Kraken2](https://ccb.jhu.edu/software/kraken2/).
 
@@ -112,7 +126,7 @@ Look through the results, what can you see?
 
 <br>
 
-## DIAMOND: contig metagenomics
+## 3.3.3: DIAMOND: contig metagenomics
 
 The Kraken2 approach above is a very fast way to classify raw sequencing reads, but even though
 it gives you a general idea of what organisms are in a sample, it doesn't tell you what
@@ -220,7 +234,7 @@ ktImportBLAST spades_SRR10168377.txt -o spades_SRR10168377_DIAMOND.html
 <br>
 
 
-# *De novo* Assembly and Metagenomics Combined Practical
+# 3.3.4: *De novo* Assembly and Metagenomics Combined Practical
 
 Now that you have become familiar with both *de novo* assembly and metagenomics approaches 
 and have sufficiently explored the sequencing dataset that was given to you, it's time to reveal

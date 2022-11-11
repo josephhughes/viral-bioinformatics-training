@@ -1,10 +1,25 @@
-# Alignments Practical
+# [GECO Viral Bioinformatics training](https://github.com/josephhughes/viral-bioinformatics-training)
+* Monday 21st - Friday 25th November 2022 - Manila, Philippines
+
+## Contents
+
+* [4.1: Alignments Tutorial](#41-alignments-tutorial)
+	+ [4.1.1: Introduction](#411-introduction)
+	+ [4.1.2: Nucleotide alignments](#412-nucleotide-alignments)
+	+ [4.1.3: Protein alignments](#413-protein-alignments)
+	+ [4.1.4: Codon alignments](#414-codon-alignments)
+	+ [4.1.5: Reference constrained alignments](#415-reference-constrained-alignments)
+	+ [4.1.6: Different alignment software](#416-different-alignment-software)
+		+ [Final task](#final-task)
+
+
+# 4.1: Alignments Tutorial
 
 In this practical we will explore the importance of sequence alignments, how different
 alignment algorithms and options (even on the same alignment software) can change the 
 output, and why an alignment matters so much when doing phylogenetics.
 
-## Introduction
+## 4.1.1: Introduction
 
 As explained in the lecture, an alignment is a hypothesis for how genetic code sequences 
 are evolutionarily related to one another. This way we can determine **homology** between 
@@ -24,10 +39,10 @@ The alignment tool we will primarily be using is called [mafft](https://mafft.cb
 and it's an easy-to-use, popular command-line tool with many algorithm options.
 
 Create a new directory for this tutorial and copy the `sarbeco_Spikes.fas` file into it that
-you can find in the `alignments_data` directory.
+you can find in the `/home/manager/GECO_course_data/Alignments` directory.
 
 
-### Nucleotide alignments
+## 4.1.2: Nucleotide alignments
 
 We will start by simply aligning the nucleotide sequences of the Spike genes in the fasta file
 provided, but we will try all the main options of mafft.
@@ -96,7 +111,7 @@ Make sure you spend some time scrolling through the alignments:
 - Are there specific areas in the Spike genes that have been aligned differently? 
 
 
-### Protein alignments
+## 4.1.3: Protein alignments
 
 Remember that we are aligning gene coding sequences. This means that you could
 theoretically translate your nucleotide alignments into protein alignments.
@@ -135,7 +150,7 @@ Open the resulting alignments with AliView. How does it compare to just translat
 the nucleotide alignment?
 
 
-### Codon alignments
+## 4.1.4: Codon alignments
 
 A nucleotide alignment is useful for determining relatedness between both coding and noncoding sequences,
 identifying changes on the nucleotide level.
@@ -181,7 +196,7 @@ The output of pal2nal is printed in standard output, so you need to direct it (`
 - Make sure you carefully compare the alignments visually in AliView.
 
 
-### Reference constrained alignments
+## 4.1.5: Reference constrained alignments
 
 This last exercise will explain a very special case of aligning sequences that is
 particularly useful when you are trying to align very diverse sequences.
@@ -247,7 +262,7 @@ based on each alignment?
 
 <br>
 
-### Different alignment software
+## 4.1.6: Different alignment software
 
 There's many other good software for making alignments, for example:
 
