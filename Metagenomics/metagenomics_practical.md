@@ -77,7 +77,7 @@ are found in the samples just by looking through the `report.txt` file?
 Try and use bash commands that you learned at the start of the course like `grep`, `cat` and `less`. 
 What would the following command show you?
 
-`cat SRR10168377_report.txt | grep -A 150 'Virus' | less`
+`cat SRR10168377_report.txt | grep -A 10 'Virus' | less`
 
 <br>
 
@@ -182,7 +182,7 @@ Again the database you'll be using has been precompiled for you and contains all
 
 
 ```
-diamond blastx -d /db/virusrefseq -p 2 -q ../denovo_assembly/spades_SRR10168377/contigs.fasta -o spades_SRR10168377 -t spades_SRR10168377_temp/ --top 3 --outfmt 6
+diamond blastx -d /home/manager/db/diamond_vir/viral.dmnd -p 2 -q ../denovo_assembly/spades_SRR10168377/contigs.fasta -o spades_SRR10168377_DIAMOND.txt -t spades_SRR10168377_temp/ --top 3 --outfmt 6
 ```
 
 Let's break this down: 
