@@ -5,7 +5,7 @@
 
 * [3.3: Metagenomics Tutorial](#33-metagenomics-tutorial)
 	+ [3.3.1: Introduction](#321-introduction)
-	+ [3.3.2: Kraken2: reads metagenomics](#332-kraken2-reads-metagenomics)
+	+ [3.3.2: Kraken: reads metagenomics](#332-kraken2-reads-metagenomics)
 		+ [Visualise results with Krona](#visualise-results-with-krona)
 	+ [3.3.3: DIAMOND: contig metagenomics](#333-diamond-contig-metagenomics)
 	+ [3.3.4: *De Novo* Assembly and Metagenomics Combined Practical](#334-de-novo-assembly-and-metagenomics-combined-practical)
@@ -20,9 +20,12 @@ Following on from the [*De Novo* Assembly Tutorial](https://github.com/josephhug
 sequencing reads that we previously processed for this metagenomic practical.
 
 
-## 3.3.2: Kraken2: reads metagenomics
+## 3.3.2: Kraken: reads metagenomics
 
 We will start with one of the most popular tools for classifying metagenomic reads: [Kraken2](https://ccb.jhu.edu/software/kraken2/).
+
+❗ Since you already learned about Kraken earlier today at the [Pathogen Detection Tutorial](https://github.com/josephhughes/viral-bioinformatics-training/blob/main/ReadProfiling/GECO_PathogenDetection.md),
+we're going to do this section quickly, applying what you learned on the current dataset.
 
 Kraken uses a k-mer based approach (similar to what we discussed in the de novo assembly lecture)
 and tries to match fragments of your read dataset to a sequence database.
@@ -31,27 +34,18 @@ meaning that the sequence database has a structure of how sequences are related,
 you if your reads match to a single sequence, but will match each k-mer within a query sequence to the 
 lowest common ancestor (LCA) of all genomes containing the given k-mer.
 
-Since Kraken is very fast, instead of using the subset of reads we had for the *de novo* assembly practical,
-we can use the full dataset of raw reads from SRA accessions SRR10168377 and SRR10168378.
-
-You can find the already trimmed read datasets in the `metagenomics_data` directory:
-- `SRR10168377_pass_1_val_1.fq`
-- `SRR10168377_pass_2_val_2.fq`
-- `SRR10168378_pass_1_val_1.fq`
-- `SRR10168378_pass_2_val_2.fq`
-
 📝 Remember to make a new directory for running the Kraken analysis to keep things tidy!
 
 
-To run Kraken you will also need a local kraken database. We have already compiled this for you at `/db/kraken/`.
+To run Kraken you will also need a local kraken database. We have already compiled this for you at `/home/manager/db/kraken2/virus`.
 You can read more about how to make custom databases at the [kraken github page](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown#custom-databases).
 
-Now it's time to find out what kinds of reads are in these samples!
+Now it's time to find out what kinds of reads are in the read samples you already trimmed and prepared for the [*De Novo* Assembly Tutorial](https://github.com/josephhughes/viral-bioinformatics-training/blob/main/Denovo_assembly/denovo_practical.md).
 
 
 ```
 
-kraken2 --db /db/kraken/ --quick --output SRR10168377_kraken.out --report SRR10168377_report.txt --paired ../metagenomics_data/SRR10168377_pass_1_val_1.fq ../metagenomics_data/SRR10168377_pass_2_val_2.fq
+kraken2 --db /home/manager/db/kraken2/virus --quick --output SRR10168377_kraken.out --report SRR10168377_report.txt --paired SRR10168377_sub_pass_1_val_1.fq SRR10168377_sub_pass_2_val_2.fq
 
 ```
 
@@ -296,7 +290,7 @@ quality of our assembly and compare this between assembling methods, using a too
 [metaQuast](https://academic.oup.com/bioinformatics/article/32/7/1088/1743987).
 
 The reference pangolin CoV genome we're going to use is called MP789 and a fasta file
-of the whole genome sequence can be found in the `metagenomics_data` directory. 
+of the whole genome sequence can be found in the `/home/manager/GECO_course_data/Metagenomics` directory. 
 
 metaQuast can be used as follows:
 
@@ -334,6 +328,6 @@ If we get extra time you can practice on a whole new dataset!
 
 Try running everything we did today for the `SRR11093265` sequencing dataset.
 
-You can find the subsampled raw dataset in the `denovo_data` folder.
+You can find the raw dataset in the `/home/manager/GECO_course_data/Metagenomics` directory or try downloading it yourself.
 
 - Do you notice anything different with this sample?
