@@ -4,11 +4,11 @@
 
 ## Practicals
 
-* [1: Linux and bash scriptin - Day 1](#1-day1)
-	+ [1.1: Basic Linux command-line](#11-basic-linux-command-line)
-	+ [1.2: File formats and Linux text processing](#12-file-formats-and-linux-text-processing)
-	+ [1.3: NGS data & QC](#1.3-ngs-data-and-qc)
-	+ [1.4: Introduction to BASH scripting](#14-introduction-to-bash-scripting)
+* [1: Linux and bash scripting - Day 1](#1-day1)
+	+ [1.1: Basic Linux command-line](Bash_Scripting/Basic_Command_Line.md)
+	+ [1.2: File formats and Linux text processing](Bash_Scripting/File_Formats_And_Text_Processing.md)
+	+ [1.3: NGS data & QC](Bash_Scripting/NGS_Data_and_QC.md)
+	+ [1.4: Introduction to BASH scripting](Bash_Scripting/Intro_To_Bash_Scripting.md)
 * [2: Reference assembly - Day 2](#2-day2)
 	+ [2.1: Reference alignment](Reference_assembly/GECO_RefAlignment_Practical.md)
 	+ [2.2: Coverage plots and statistics](AlignmentVisualization/GECO_AssemblyVisualization_and_statistics.md)
