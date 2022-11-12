@@ -22,6 +22,17 @@
 - [2: Quality Control Bash Script](#2-quality-control-bash-script)
     - [Task 6](#task-6)
     - [Task 7](#task-7)
+- [3: Summary Tasks](#3-summary-tasks)
+  - [Section 3.1: Basic Commands](#section-31-basic-commands)
+    - [Task 3.1.1](#task-311)
+    - [Task 3.1.2](#task-312)
+  - [Section 3.2: File Creation and Manipulation](#section-32-file-creation-and-manipulation)
+    - [Task 3.2.1](#task-321)
+    - [Task 3.2.2](#task-322)
+  - [Section 3.3: Loops and If Statements](#section-33-loops-and-if-statements)
+    - [Task 3.3.1](#task-331)
+    - [Task 3.3.2](#task-332)
+    - [Task 3.3.3](#task-333)
 
 
 # 1: Bash Scripting
@@ -190,6 +201,65 @@ else
 fi
 
 ```
+
+For checking string equality, the syntax in bash is a little different. The comparison operators are different, and depending in the syntax used the structure if the if is also a little altered. Below are 2 different methods to do a string comparison.
+```bash
+#!/bash_location
+
+##An if condition that prints "i == 1" if i == 1
+i="Hello"
+j="Goodbye"
+
+#The first method uses a single [] in the if, with equality being the `=` symbol
+if [ "$i" = "$j" ]
+then
+  echo "i and j are the same string!"
+else
+  echo "i and j are different strings"
+fi
+
+#The second way uses a double [] in the if, with equality being the `==` symbol
+if [[ $i == $j ]]
+then
+  echo "i and j are the same string!"
+else
+  echo "i and j are different strings"
+fi
+
+```
+
+Sometimes we want to loop through a list of items, but stop looping early if we have found what we need. In this case it can be handy to use a `for` loop in conjunction with an `if`  statement as well as a `break` statement. `break` statements exit a loop if the statement is run. We can use this ability with an if to conditionally exit `for` loops.
+
+```bash
+#!/bash_location
+##A bash for loop through the number range 1-3
+for number in {1..3}
+do
+  if [ $number -eq 2 ]
+  then
+    break
+  else
+    echo $number
+  fi
+done
+
+```
+Similar to break is the `continue` command, which skips to the next iteration of the loop rather than exiting it altogether
+
+```bash
+#!/bash_location
+##A bash for loop through the number range 1-3
+for number in {1..5}
+do
+  if [ $number -eq 2 ]
+  then
+    continue
+  else
+    echo $number
+  fi
+done
+
+```
 ---
 
 ### Task 5
@@ -219,6 +289,53 @@ kieran@linuxmachine:~$ fastqc filename
 Make a bash script that loops through each file in the Datasets/fastq_data, checks if the file is illumina or nextera based on the name, runs `fastqc` on the files, then runs `trim_galore` and uses the correct parameters based on the filetype.
 
 ### Task 7 
-Do the same as above (except autodetect adaptors can be used here), this time with the files in the Datasets/fastq_data/paired_end which are paired end sequence reads.
+Do the same as task 6 (except autodetect adaptors can be used here), this time with the files in the Datasets/fastq_data/paired_end which are paired end sequence reads.
 
 ----
+
+
+
+# 3: Summary Tasks
+If you have some time left, here are a few tasks that make use of what we have learned so far.
+
+## Section 3.1: Basic Commands
+Create bash scripts for each of the following questions:
+
+### Task 3.1.1
+  1. Make a directory called "Basic_Commands"
+  2. Print to the terminal "Basic_Command Directory Created!"
+
+### Task 3.1.2
+  1. Accept 2 file name parameters
+  2. Create the 2 files in the "Basic_Commands" directory
+  3. Print the list of files in the "Basic_Commands" directory
+
+## Section 3.2: File Creation and Manipulation
+### Task 3.2.1
+  1. Get the header line of the `Datasets/owid-covid-data.csv` and make a new file with the header as the first line.
+  2. Append the last 100 lines to the file
+  3. Append the first 500 lines
+  4. Sort the new file on the 4th columns and save the sorted version as a new file
+  5. Print a completion message
+  6. Print the number of rows in the file (excluding the header row)
+
+### Task 3.2.2
+  1. Extract the lines of the `sarscov2.gb` file containing the string "product="
+  2. Only print the product values for each product
+  3. Make sure the products are unique
+
+
+## Section 3.3: Loops and If Statements
+
+### Task 3.3.1
+  1. Count the number of reads in the fastq file `Datasets/fastq_data/paired_end/SRR1748193_0_1.fq` using a loop.
+
+
+### Task 3.3.2
+ 1. Loop the first 500 lines of the `Datasets/owid-covid-data.csv`
+ 2. Retrieve the value for number of cases
+ 3. Add it to a variable called total_number_of_cases (remembr the values is a decimal so `bc` is needed)
+ 4. Print the total
+
+### Task 3.3.3
+  1. Check if the file `Datasets/fastq_data/paired_end/SRR1748193_0_1.fq` has a matching paired end file in the directory.

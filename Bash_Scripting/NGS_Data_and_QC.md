@@ -39,7 +39,6 @@ If we look at an example report showing a poor quality fastq file we might see s
 |  ![alt text](Images/per_base_fq.png)  | ![alt text](Images/per_base_fq_good.png) |
 
 
-
 A set of sequences with very poor quality might be due to flow cells being damaged or faulty. If enough of the flow cell is affected by these issues, the sequencing may have to be repeated. Ideally the image below should show an all blue square indicating the quality is high at all positions in the cell.
 
 | **Bad Data** | **Good Data** |
@@ -54,9 +53,6 @@ FastQC produces a number of outputs that let you assess the sequence reads (Adap
 | **Bad Data** | **Good Data** |
 |:--------:|:---:|
 |  <img src="Images/bad_qc.png" width="300">  | <img src="Images/good_qc.png" width="300">  |
-
-
-
 
 
 ___
@@ -78,7 +74,6 @@ While `cutadapt` can be used on its own, it is more often paired with `fastqc` s
 ```bash
 kieran@linuxmachine:~$ trim_galore [-flags] [-files]
 ```
-
 ___
 
 ### Task 2
