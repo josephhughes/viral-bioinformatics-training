@@ -115,7 +115,8 @@ Tablet should now load the entire BAM file for visualisation. You can use the sc
 
 
 #### 2.2.1 Read Display
-In the read display, As, Cs, GS and Ts are represented with different colour blocks, Variants are highlighted with Red Text and a different shading, Deletions are represented with Red Asterisks, whilst the location of Insertions is highlighted with red boxes.
+
+In the read display, As, Cs, GS and Ts are represented with different colour blocks, Variants are highlighted with Red Text and a different shading, Deletions are represented with Red Asterisks, whilst the location of Insertions is highlighted with red boxes.
 NB: Like insertions, soft clipping at the end of the reads are also highlighted with red boxes. Soft clipping is where the aligner has decided to discount a portion of the read (at the read’s beginning or end) to improve the alignment.
 You can easily jump about the BAM alignment by clicking within the Coverage Overview window, and the read display will be updated to show this region.
 

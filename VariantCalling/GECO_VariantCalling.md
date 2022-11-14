@@ -14,6 +14,8 @@ What we have done so far was concerned with creating an overall consensus sequen
 
 ```
 cd GECO_course_data/Reference_alignment
+```
+```
 lofreq call -f MN908947.fasta -o var.vcf Vero_SARS2.bam
 ```
 
@@ -41,15 +43,15 @@ directions: RefFwd, RefRev, VarFwd, VarRef
 
 If you examine the file you should be able to see that the variants range from low frequencies (such as 1% [0.01] and 2% [0.02]) to consensus level (100% [1.0] e.g., position 14805).
 
+**Questions** What has happened at site 5340 and site 26141? What frequency are these mutations at?
+
 One thing missing now is characterising the mutations – determining if they are non-synonymous, synonymous or in non-coding regions. To do this we will use a tool called ```DiversiTools/DiversiUtils```, this needs details of the ORFs in the reference genome which we have already created in ```Coding.regions.SARS2.txt```. It is a simple text file that gives the start and stop co-ordinates of each gene.
 
 ```
 diversiutils_linux -bam Vero_SARS2.bam -ref MN908947.fasta -orfs Coding.regions.SARS2.txt -stub diversi
 ```
 
-You can either examine the diversi_AA.txt output file yourselves or open it up in the DiversiTools interactive GUI.
-```
-java -jar ~/Programs/DiversiTools.jar
-```
+The diversi_AA.txt output file contains a lot of information for each amino acid site. The amino acid counts have been calculated from the read level data.
 
-The program should open in the “Load” tab, click the Load button, Navigate to the ```~/GECO_course_data/Reference_alignment/``` folder, select the ```diversi_entropy.txt`` file and click Open. Various interactive graphs will be displayed for you to explore the diversity within the sample.
+**Questions** Find the corresponding amino acids for sites 5340, 14805 and 26141 keeping in mind that these sites may be the 1st, 2nd or third base of a codon? Are the changes sysnonymous or non-synonymous?  
+

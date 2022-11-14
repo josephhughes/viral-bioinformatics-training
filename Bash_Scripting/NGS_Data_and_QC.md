@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # [GECO Viral Bioinformatics training](https://github.com/josephhughes/viral-bioinformatics-training)
 * Monday 21st - Friday 25th November 2022 - Manila, Philippines
 
