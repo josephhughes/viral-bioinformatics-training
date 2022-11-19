@@ -19,9 +19,11 @@
       - [Task 4](#task-4)
   - [1.5: `if else` Statements](#15-if-else-statements)
     - [Task 5](#task-5)
-- [2: Quality Control Bash Script](#2-quality-control-bash-script)
+  - [1.6: Substrings](#16-substrings)
     - [Task 6](#task-6)
+- [2: Quality Control Bash Script](#2-quality-control-bash-script)
     - [Task 7](#task-7)
+    - [Task 8](#task-8)
 - [3: Summary Tasks](#3-summary-tasks)
   - [Section 3.1: Basic Commands](#section-31-basic-commands)
     - [Task 3.1.1](#task-311)
@@ -268,6 +270,48 @@ Make a bash script that loops through each file in the current directory, and pr
 ----
 
 
+## 1.6: Substrings
+Extracting substrings from strings is a very common form of string manipulation. In bash, there are multiple ways we can do this. We have seen already how commands like 'awk' and 'cut' can be used to retrieve sections of strings, but bash has its own method of doing this using the '${string_variable:position:length}' syntax. 
+
+```bash
+#!/bash_location
+name="alignment.fasta"
+
+#Print fasta
+echo ${name: -5}
+#Also print fasta
+echo ${name: 10}
+#Also print fasta
+echo ${name: 10:5}
+```
+
+This syntax allows us to quickly and easily extract sections of strings. This syntax is called parameter expansion and has another trick that is very convenient for when we arent sure of the size of the substring we are extracting (i.e not all file extensions are 2 letters).
+
+```bash
+#!/bash_location
+name="alignment.fasta"
+
+#Print fasta
+echo ${name#*.}
+
+#Also print alignment
+echo ${name%.*}
+
+#Also print alignment
+echo ${name%.fasta}
+```
+
+Parameter expansion allows for specification of a patter/character to operate around and a character to determine what side of this pattern to operate on (left side is #, rightside %). By specifying `"#*."` we are saying remove everything on the left hand side of the ".". By saying `"%.fasta"` we say remove anythin on the right of `".fasta"`.
+
+
+---
+
+### Task 6
+Make a bash script that loops through each file in the datasets directory and prints the file name without the extension, then on the next line print the extension of that file.
+
+---
+
+
 # 2: Quality Control Bash Script
 Now we can use the skills from above to make a script to automate some quality control for a set of fastq files. We are going to use the `FastQC` and `TrimGalore!` package to run some quality control checks on our sequences. `As a reminder, TrimGalore!` is a `perl` package that links together the `cutadapt` and `fastqc` packages to make a pipeline that trims sequence reads of their adaptor sequences and removes low quality reads. We can call the package as follows:
 
@@ -285,10 +329,10 @@ kieran@linuxmachine:~$ fastqc filename
 
 ---
 
-### Task 6
+### Task 7
 Make a bash script that loops through each file in the Datasets/fastq_data, checks if the file is illumina or nextera based on the name, runs `fastqc` on the files, then runs `trim_galore` and uses the correct parameters based on the filetype.
 
-### Task 7 
+### Task 8 
 Do the same as task 6 (except autodetect adaptors can be used here), this time with the files in the Datasets/fastq_data/paired_end which are paired end sequence reads.
 
 ----
