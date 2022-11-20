@@ -150,18 +150,8 @@ i=1
 while [ $i -lt 10 ]
 do
   echo $i
-  ((i++))
+  i=$(($i+1))
 done
-```
-For arithmentic that includes a decimal point, the result must be piped to the `bc` command which allows for the processing of floating point/decimal numbers.
-
-```bash
-#!/bash_location
-
-##A while loop that prints the value of i while is <10
-i=1
-i=`$(($i+1.2)) | bc`
-echo $i
 ```
 
 ### 1.4.3: `until` Loop
@@ -175,6 +165,7 @@ i=1
 until [ $i -ge 10 ]
 do
   echo $i
+  #A simpler way to increment i
   ((i++))
 done
 ```
@@ -204,7 +195,7 @@ fi
 
 ```
 
-For checking string equality, the syntax in bash is a little different. The comparison operators are different, and depending in the syntax used the structure if the if is also a little altered. Below are 2 different methods to do a string comparison.
+For checking string equality, the syntax in bash is a little different. The comparison operators are different, and depending in the syntax used the structure if the if is also a little altered. Below are 2 different methods to do a string comparison, as well as a way to check for substrings inside a string with the wildcard syntax.
 ```bash
 #!/bash_location
 
@@ -226,6 +217,16 @@ then
   echo "i and j are the same string!"
 else
   echo "i and j are different strings"
+fi
+
+i="Hello and Goodbye"
+
+#Check string contains other string with wildcard
+if [[ $i == *"Goodbye"* ]]
+then
+  echo "i contains goodbye"
+else
+  echo "i does not contain goodbye"
 fi
 
 ```
@@ -294,7 +295,7 @@ name="alignment.fasta"
 #Print fasta
 echo ${name#*.}
 
-#Also print alignment
+#Print alignment
 echo ${name%.*}
 
 #Also print alignment
@@ -377,8 +378,8 @@ Create bash scripts for each of the following questions:
 
 ### Task 3.3.2
  1. Loop the first 500 lines of the `Datasets/owid-covid-data.csv`
- 2. Retrieve the value for number of cases
- 3. Add it to a variable called total_number_of_cases (remembr the values is a decimal so `bc` is needed)
+ 2. Retrieve the value for new_cases
+ 3. Add it to a variable called total_number_of_cases 
  4. Print the total
 
 ### Task 3.3.3

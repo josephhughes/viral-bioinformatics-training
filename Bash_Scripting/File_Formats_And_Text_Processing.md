@@ -377,7 +377,7 @@ kieran@linuxmachine:~$ grep "gene=" Datasets/sarscov2.gb |uniq | grep -o '".*"'
 Extract the lines containing the paper titles in the sarscov2.gb file
 
 ### Task 18
-Extract the lines from the owid-covid-data.csv file that are from the Philippines, sort by the number of cases per day and print the top row.
+Extract the lines from the owid-covid-data.csv file that are from the Philippines, sort by the number of new cases and print the top row.
 
 ----
 
@@ -485,3 +485,4 @@ kieran@linuxmachine:~$ awk 'BEGIN {i = 1; while (i < 6) { print i; ++i } }'
 Use `awk` to get lines that contain "Philippines", and display the Date column.
 
 ----
+
