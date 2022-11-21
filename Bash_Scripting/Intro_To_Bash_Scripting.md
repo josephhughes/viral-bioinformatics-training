@@ -62,6 +62,13 @@ kieran@linuxmachine:~$ ./bash_script.sh
 hello world
 ```
 
+If permissions are denied for chmod, we can also call scripts as follows:
+
+```shell
+kieran@linuxmachine:~$ bash bash_script.sh
+hello world
+```
+
 
 ### Task 1
 Create a bash script, make it executable and then run it from the command line.
