@@ -42,6 +42,7 @@
     - [Task 20](#task-20)
   - [1.14: `awk`](#114-awk)
     - [Task 21](#task-21)
+- [Links](#links)
 
 
 # 1: File Creation and Manipulation
@@ -486,3 +487,17 @@ Use `awk` to get lines that contain "Philippines", and display the Date column.
 
 ----
 
+# Links
+
+Links are an alternative to copying a file. It allows for a user to easily access files in their current working directory without having to duplicate that file in the new location or give very long file paths to access the file. We can make a link using the `ln` command. 
+
+```bash
+kieran@linuxmachine:~$ ln -s [Source_File_Path] [Link_Path]
+```
+The -s flag is used to specify that the link is a softlink, and works similar to a hyperlink or alias where the new location is linked to a location elsewhere.
+If we are in our home directory, we can make a link to the Datasets/owid-covid-data.csv file and call the link covid_spreadsheet.csv as follows:
+
+```bash
+kieran@linuxmachine:~$ ln -s Datasets/owid-covid-data.csv covid_spreadsheet.csv
+```
+Looking in our home directory now, you can see a file called covid_spreadsheet.csv that links to our initial Datasets/owid-covid-data.csv file but is in the more convenient location of our home director. It should be noted that it is not necessary to change the name of the file for the link.
