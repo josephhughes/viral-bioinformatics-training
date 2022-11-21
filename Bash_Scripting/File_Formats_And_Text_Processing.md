@@ -254,7 +254,7 @@ Retrieve the first 100 lines of the owid-covid-data.csv and pipe the output to r
 The `sort` command allows for files to be sorted, and a number of flags can be used to specify how the sorting should be done. 2 useful flags when sorting formatted data like csv or tsv files are the `-t` flag which indicates the character that separates the columns and the `-k` flag which allows for column selection.
 
 ```bash
-kieran@linuxmachine:~$ sort 5_rows.txt -t "," -k 11   
+kieran@linuxmachine:~$ sort 5_rows.txt -t "," -k 4   
 AFG,Asia,Afghanistan,2021-07-11,133578.0,801.0,1261.429,5724.0,3247.799,19.475,30.67
 AFG,Asia,Afghanistan,2021-07-10,132777.0,1191.0,1327.429,5638.0,3228.324,28.958,32.275
 AFG,Asia,Afghanistan,2021-07-09,131586.0,1473.0,1347.143,5561.0,3199.366,35.814,32.754
@@ -266,7 +266,7 @@ AFG,Asia,Afghanistan,2021-07-07,129021.0,1557.0,1480.286,5415.0,3137.001,37.857,
 AFG,Asia,Afghanistan,2021-07-04,124748.0,1263.0,1504.0,5199.0,3033.108,30.708,36.568
 AFG,Asia,Afghanistan,2021-07-02,122156.0,1940.0,1509.143,5048.0,2970.086,47.169,36.693
 ```
-By specifying the separator as a `,` and setting `-k 11`, we have sorted the file according to the 11th column of the csv file. By default the order is ascending, but the `-r` flag can be used to invert this behaviour to descending.
+By specifying the separator as a `,` and setting `-k 4`, we have sorted the file according to the 4 column of the csv file. By default the order is ascending, but the `-r` flag can be used to invert this behaviour to descending.
 
 `sort` can also be used with the `-u` flag to make the sorted output unique (i.e it is similar to sorting a file and then piping the output to `uniq`)
 
