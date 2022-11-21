@@ -25,8 +25,16 @@
     - [Task 7](#task-7)
 
 
+
 # 1: Basic Command Line
 There are a number of handy commands and shortcuts that are useful to know before diving into the Linux command line. 
+
+First if you can copy and paste the following line into the terminal, this will download the data we will be using today.
+
+  ```shell 
+wget -c https://github.com/josephhughes/viral-bioinformatics-training/archive/master.tar.gz -O - |
+tar -xz --strip=2 "viral-bioinformatics-training-main/Bash_Scripting/"
+  ```
 
 ## 1.1: Tab Autocomplete
   When using the command line, often typing is the slowest part. Linux is awar of this and lets you use the tab button to autocomplete for certain filnames or directories. While typing in a filename, if you type the first few letters and hit the tab button, Linux will attempt to autocomplete the name for you. If it cannot do this, keep typing out the name as it is likely the first few characters are not enough to uniquely identify the file. This can be verified by hitting the tab button twice which will produce the following output:
