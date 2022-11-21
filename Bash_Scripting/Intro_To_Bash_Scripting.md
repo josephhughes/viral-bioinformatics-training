@@ -41,7 +41,7 @@
 Often bash scripts are created as a way to automate tasks. Bash scripts are small files that contain a series of bash commands and can be run from the command line. The scripts can take arguments like filenames, can perform repeated operations using loops, and can allow for easily reproducible execution of operations.
 
 ## 1.1: Creating a bash script
-A bash script can be made by creating a textfile (using a text editor such as `nano`) and saving the file with a file ending of `.sh` to indicate that the file is a bash script. Bash scripts need to know the location of the bash interpreter (typically located in the `/bin/bash` directory) in order to be run. `#!/bin/bash` (i.e `#!/bash_location`) is placed at the top of the file to tell the script where to be run from. Bash scripts also need to be made executable, which allows them to be run from the command line. We can do this by using the `chmod` command which allows the user to change the permissions of a file. For our purposes, we want to make the file executable by the current user, so we can simply run `chmod` as follows:
+A bash script can be made by creating a textfile (using a text editor such as `nano`) and saving the file with a file ending of `.sh` to indicate that the file is a bash script. Bash scripts need to know the location of the bash interpreter (typically located in the `/bin/bash` directory) in order to be run. `#!/bin/bash` is placed at the top of the file to tell the script where to be run from. Bash scripts also need to be made executable, which allows them to be run from the command line. We can do this by using the `chmod` command which allows the user to change the permissions of a file. For our purposes, we want to make the file executable by the current user, so we can simply run `chmod` as follows:
 
 ```bash
 kieran@linuxmachine:~$ chmod +x bash_script_name.sh 
@@ -50,7 +50,7 @@ kieran@linuxmachine:~$ chmod +x bash_script_name.sh
 The `+x` tells `chmod` that we wish to make the script executable, but there are many more permissions that can be added or removed by `chmod` such as who can edit the file, read it or execute it. Below is an example of a simple bash script to print hellow world
 
 ```bash
-#!/bash_location
+#!/bin/bash
 echo hello world
 ```
 
@@ -77,7 +77,7 @@ Create a bash script, make it executable and then run it from the command line.
 In bash scripts, we sometimes want to store the contents of our commands not as other files, but as variables in the script. We can do this using the ` ` ` parenthesis to indicate that the command is to be run and stored at a variable.
 
 ```bash
-#!/bash_location
+#!/bin/bash
 csv_file=`cat owid-covid-data.csv`  
 echo $csv_file
 ```
@@ -92,7 +92,7 @@ kieran@linuxmachine:~$ ./bash_script.sh arg_1 arg_2
 To access these arguments in the script, Bash splits the argument sting by spaces and allocates numbers to each argument
 
 ```bash
-#!/bash_location
+#!/bin/bash
 echo $1
 echo $2
 ```
@@ -112,7 +112,7 @@ Loops are a fundamental aspect of most programming languages, and are necessary 
 `for` loops are typically used when an operation is to be repeated a known number of times. This can used when theres a list of items, a directory of files, or a simple range of numbers.
 
 ```bash
-#!/bash_location
+#!/bin/bash
 
 ##A bash for loop through a list of names
 names='Kieran Dan John'
@@ -150,7 +150,7 @@ Make a bash script that uses a `for` loop to print numbers from 50-55.
 `while` loops can be used when an action should be repeated until a given condition is met. Common conditions in `while` loops are less than (denoted by `-lt`), greater than (`-gt`), equal to (`-eq`), greater than or equal to (`-ge`) and less than or equal to (`-le`). Arithmetic operations in bash must be done using either double brackets `((arithmetic))`, the `expr` command, or the `let` command. Here we use double brackets to increment the value of `i` so that the loop does not run forever.
 
 ```bash
-#!/bash_location
+#!/bin/bash
 
 ##A while loop that prints the value of i while is <10
 i=1
@@ -165,7 +165,7 @@ done
 The `until` loop is identical to the while, and is mostly a semantic change to make the bash script easier to understand. The example below produces the same output as the `while` loop, but since we are looping until `i>=10`, we need to change our comparison operator to `-ge` instead of `-lt`
 
 ```bash
-#!/bash_location
+#!/bin/bash
 
 ##A while loop that prints the value of i while is <10
 i=1
@@ -189,7 +189,7 @@ Make a bash script that uses a `while` or `until` loop to print the line count o
 As we demonstrated briefly with the `awk` command, sometimes we will want to complete certain task only if a condition is met. To do this in a bash script, we use `if` statements. Similar to the `while` condition, an `if` condition will only execute the commands if the condition is met. All if statements begin with `if`, followed by the condition. If there are multiple conditions, an `elif` or an `else` statement can be used to capture this. All if statments are concluded with a `fi` statement.
 
 ```bash
-#!/bash_location
+#!/bin/bash
 
 ##An if condition that prints "i == 1" if i == 1
 i=1
@@ -204,7 +204,7 @@ fi
 
 For checking string equality, the syntax in bash is a little different. The comparison operators are different, and depending in the syntax used the structure if the if is also a little altered. Below are 2 different methods to do a string comparison, as well as a way to check for substrings inside a string with the wildcard syntax.
 ```bash
-#!/bash_location
+#!/bin/bash
 
 ##An if condition that prints "i == 1" if i == 1
 i="Hello"
@@ -241,7 +241,7 @@ fi
 Sometimes we want to loop through a list of items, but stop looping early if we have found what we need. In this case it can be handy to use a `for` loop in conjunction with an `if`  statement as well as a `break` statement. `break` statements exit a loop if the statement is run. We can use this ability with an if to conditionally exit `for` loops.
 
 ```bash
-#!/bash_location
+#!/bin/bash
 ##A bash for loop through the number range 1-3
 for number in {1..3}
 do
@@ -257,7 +257,7 @@ done
 Similar to break is the `continue` command, which skips to the next iteration of the loop rather than exiting it altogether
 
 ```bash
-#!/bash_location
+#!/bin/bash
 ##A bash for loop through the number range 1-3
 for number in {1..5}
 do
@@ -282,7 +282,7 @@ Make a bash script that loops through each file in the current directory, and pr
 Extracting substrings from strings is a very common form of string manipulation. In bash, there are multiple ways we can do this. We have seen already how commands like 'awk' and 'cut' can be used to retrieve sections of strings, but bash has its own method of doing this using the '${string_variable:position:length}' syntax. 
 
 ```bash
-#!/bash_location
+#!/bin/bash
 name="alignment.fasta"
 
 #Print fasta
@@ -296,7 +296,7 @@ echo ${name: 10:5}
 This syntax allows us to quickly and easily extract sections of strings. This syntax is called parameter expansion and has another trick that is very convenient for when we arent sure of the size of the substring we are extracting (i.e not all file extensions are 2 letters).
 
 ```bash
-#!/bash_location
+#!/bin/bash
 name="alignment.fasta"
 
 #Print fasta
