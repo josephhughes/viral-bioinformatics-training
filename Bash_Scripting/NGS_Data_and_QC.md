@@ -12,11 +12,19 @@
 - [3: Trimming Reads and Quality Control in one! (trim_galore)](#3-trimming-reads-and-quality-control-in-one-trim_galore)
     - [Task 2](#task-2)
 
+
+
 # 1: Quality Control (FastQC)
 When we obtain our sequencing reads from the NGS sequencers, we typically get them in the form of a fastq file. These files contain sometimes millions of reads, read ids, optional metadata fields and their quality scores. The initial set of sequence reads collected from the sequencer can have a number of defects that must be detected before any further processing of the reads can be completed. This can include contamination by adapter sequences (these are artificial DNA sequences that are necessary for the sequencing process) or the presence of low quality sequence reads (especially at the end of longer reads). As such we need a tool to detect the quality of or reads so that we know if any post-processing is required to "clean" them. FastQC does exactly this, producing a report that allows us to check various properties of the sequence reads to help us determine if they are of a suitable quality.
 
 ## 1.1 Running FastQC
 FastQC can be run on the command line by using the `fastqc` command. The program takes a fastq file (or a wildcard such as *.fq to pass multiple fastq files) and generates a report html file which can be opened in the browser. 
+
+To allow fastqc to run, copy and paste this command into the terminal:
+```bash
+export PATH="/home/manager/miniconda/bin/:$PATH"
+```
+
 
 ```bash
 kieran@linuxmachine:~$ fastqc Datasets/fastq_data/illumina_10K.fastq.gz
