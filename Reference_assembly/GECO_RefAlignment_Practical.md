@@ -40,10 +40,23 @@ In shotgun sequencing, the reads are randomly sheared into different size using 
 In most cases, you need sufficient starting material to achieve this. Here we will use as an example, SARS2 that has been cultured up in Vero cells before sequencing.
 
 
-We will navigate into the folder with the illumina data:
+We will first create a new directory and be working in this directory for processing the standard shotgun Illumina data:
+
 ```
-cd ~/GECO_course_data/Reference_alignment/
+mkdir Ref_tutorial
 ```
+
+```
+cd Ref_tutorial
+```
+
+Now we are going to link to the files with the reads. This is like creating an alias in Windows. The files will appear to be in your local directory but they are actually still in their original location:
+
+```
+ln -s /home/manager/GECO_course_data/Reference_alignment/*.fastq .
+```
+
+**Task:** There are other files in `home/manager/GECO_course_data/Reference_alignment`, creat soft links to those files too.
 
 ### 1.1.1: Preparing your reads for mapping
 We start by trimming and quality checking the reads:
