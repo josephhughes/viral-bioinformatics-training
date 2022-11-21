@@ -16,8 +16,8 @@
       - [Task 3](#task-3)
     - [1.4.2: `while` Loop](#142-while-loop)
     - [1.4.3: `until` Loop](#143-until-loop)
-      - [Task 4](#task-4)
   - [1.5: `if else` Statements](#15-if-else-statements)
+      - [Task 4](#task-4)
     - [Task 5](#task-5)
   - [1.6: Substrings](#16-substrings)
     - [Task 6](#task-6)
@@ -177,13 +177,6 @@ do
 done
 ```
 
----
-
-#### Task 4
-Make a bash script that uses a `while` or `until` loop to print the line count of 2 files in the current directory.
-
-----
-
 
 ## 1.5: `if else` Statements
 As we demonstrated briefly with the `awk` command, sometimes we will want to complete certain task only if a condition is met. To do this in a bash script, we use `if` statements. Similar to the `while` condition, an `if` condition will only execute the commands if the condition is met. All if statements begin with `if`, followed by the condition. If there are multiple conditions, an `elif` or an `else` statement can be used to capture this. All if statments are concluded with a `fi` statement.
@@ -254,6 +247,15 @@ do
 done
 
 ```
+
+---
+
+#### Task 4
+Make a bash script that uses a `while` or `until` loop to print the line count of 2 files in the current directory (you can use a break in the for loop to exit the loop early).
+
+----
+
+
 Similar to break is the `continue` command, which skips to the next iteration of the loop rather than exiting it altogether
 
 ```bash
