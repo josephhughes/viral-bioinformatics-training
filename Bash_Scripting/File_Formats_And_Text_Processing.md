@@ -201,7 +201,7 @@ Use `head` to display the first 5 lines of the owid-covid-data.csv file.
 Use `tail` to display the last 3 lines of the owid-covid-data.csv file.
 
 ### Task 11
-Use `tail` to display the last lines of the owid-covid-data.csv file after line 231630 (**hint** you can also use + with the `-n` flag ).
+Use `tail` to display the every line of the owid-covid-data.csv file after the header (**hint** you can also use + with the `-n` flag to specify that you wish to get all lines in a file after a certain line number +2 will include all lines except the header line since this is line 1 ).
 
 -----
 
