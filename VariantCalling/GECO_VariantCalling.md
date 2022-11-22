@@ -5,8 +5,6 @@
 ## Contents
 
 * [3: Varant Calling tutorial](#3-variant-calling-tutorial)
-	+ [2.1: Extracting statistics with weeSAM](#21-extracting-statistics-with-weesam)
-	+ [2.2: Visualizing the alignment with Tablet](#2.2-visualizing-alignment-with-tablet)
 
 ## 3: Variant Calling tutorial
 
