@@ -266,10 +266,10 @@ The 'artic-ncov2019' [Conda](https://docs.conda.io/en/latest/) environment has a
 conda activate artic-ncov2019
 ```
 
-Next, lets change directory (```cd```) into the folder where the example MinION data is located for this practical:
+Next, lets explore the output from a run:
 
 ```
-cd ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/
+ls /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/
 
 ```
 
@@ -279,9 +279,6 @@ This run was performed on an [Oxford Nanopore Technologies](https://nanoporetech
 
 The run was live basecalled and demultiplexed using the ONT basecaller Guppy (this is available for download from the [ONT website](https://nanoporetech.com) after registration with ONT), making use of the GridION's onboard Graphical Processing Unit (GPU). If you list the contents of this directory you should see a number of files and folders:
 
-```
-ls
-```
 
 The key files and folders in this run folder are (amongst others):
 
@@ -296,7 +293,7 @@ The key files and folders in this run folder are (amongst others):
 As the data has already been demultiplexed, there is one folder for each barcode detected on the run:
 
 ```
-ls fastq_pass
+ls /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass
 ```
 
 You should see the following barcode folders (06, 07 and 12) representing the 3 samples on the run that we will be analysing:
@@ -311,7 +308,7 @@ You should see the following barcode folders (06, 07 and 12) representing the 3 
 Typically the FASTQ data for each sample is stored in multiple files of around 4000 reads each. For barcode06, you should see 25 different FASTQ files, numerically labelled at the end of their filename from 0 to 24:
 
 ```
-ls fastq_pass/barcode06
+ls /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06
 ```
 
 
@@ -325,19 +322,19 @@ The first sample we will be working with is barcode06. The ARTIC bioinformatics 
 First we will create a folder to work in and store our output files:
 
 ```
-mkdir ~/SARS-CoV-2/MinION_Results
+mkdir MinION_Results
 ```
 
 Then we will move into the folder to work:
 
 ```
-cd ~/SARS-CoV-2/MinION_Results
+cd MinION_Results
 ```
 
 **artic guppyplex** - now we will run artic guppyplex on sample barcode06:
 
 ```
-artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06 --prefix cvr124a
+artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory /home/manager/SARS-CoV-2/MinION//20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06 --prefix cvr124a
 ```
 
 Breaking this command down:
@@ -359,7 +356,7 @@ ls
 
 
 ```
-artic minion --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file cvr124a_barcode06.fastq --fast5-directory ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fast5_pass/barcode06 --sequencing-summary ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/sequencing_summary_FAO14190_ad60b376.txt nCoV-2019/V2 barcode06
+artic minion --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file cvr124a_barcode06.fastq --fast5-directory /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fast5_pass/barcode06 --sequencing-summary /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/sequencing_summary_FAO14190_ad60b376.txt nCoV-2019/V2 barcode06
 ```
 
 Breaking this command down:
@@ -418,11 +415,11 @@ A reminder of the two commands used for barcode06 is:
 
 
 ```
-artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06 --prefix cvr124a
+artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06 --prefix cvr124a
 ```
 
 ```
-artic minion --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file cvr124a_barcode06.fastq --fast5-directory ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fast5_pass/barcode06 --sequencing-summary ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/sequencing_summary_FAO14190_ad60b376.txt nCoV-2019/V2 barcode06
+artic minion --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file cvr124a_barcode06.fastq --fast5-directory /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fast5_pass/barcode06 --sequencing-summary /home/manager/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/sequencing_summary_FAO14190_ad60b376.txt nCoV-2019/V2 barcode06
 ```
 
 Essentially all you will need to do is change every occurrence of **barcode06** (once in guppyplex and three times in minion) to either **barcode07** or **barcode12**. 
@@ -466,10 +463,10 @@ We do not need to use a conda environment as all the tools we need are already i
 * [ivar](https://andersen-lab.github.io/ivar/html/manualpage.html) for primer trimming and consensus calling
 * [weeSAM](https://github.com/centre-for-virus-research/weeSAM) for coverage plots.
 
-First, lets move into the Illumina data directory:
+First, lets look at the Illumina data directory:
 
 ```
-cd ~/SARS-CoV-2/Illumina/200703_M01569_0148_000000000-J53HN_Batch70/
+cd /home/manager/SARS-CoV-2/Illumina/200703_M01569_0148_000000000-J53HN_Batch70/
 ```
 
 The data in this folder is from a run on an Illumina MiSeq machine. The name of the folder implies it was run on the 3rd July 2020 (200703), the machine ID is M01569, the run ID is 0148_000000000-J53HN, and this was called Batch70 locally within the [Medical Research Council-University of Glasgow Centre for Virus Research](https://www.gla.ac.uk/research/az/cvr/) (CVR) as part of a Covid-19 Genomics UK Consortium ([COG-UK](https://www.cogconsortium.uk)) sequencing run. The samples were sequenced using Version 1 (V1) of the ARTIC [nCoV-2019](https://github.com/artic-network/primer-schemes/tree/master/nCoV-2019) amplicon primers.
@@ -481,11 +478,8 @@ There are four samples in this run called:
 * CVR2092
 * CVR2101
 
-If you list the contents of the directory you should see paired end reads (R1.fastq and R2.fastq) for each of the four samples:
+If you list the contents of the directory you should see paired end reads (R1.fastq and R2.fastq) for each of the four samples.
 
-```
-ls
-```
 
 These samples have already been trimmed/filtered using [trim_galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/), so we do not need to QC them. For information, this is command that was used for each sample:
 
@@ -500,13 +494,26 @@ We will be using the [Wuhan-Hu-1](https://www.ncbi.nlm.nih.gov/nuccore/MN908947)
 First we need to index the reference sequence that we will be aligning our reads to. Indexing enables the aligner to quickly look up the best places to start aligning a read by using small sequences call 'seeds' from within the read and looking up if and where those seeds occur in the reference genome using the index.
 
 ```
-bwa index ~/SARS-CoV-2/MN908947.fasta 
+mkdir Illumina_results
+```
+
+```
+cd Illumina_results
+```
+
+```
+cp /home/manager/SARS-CoV-2/MN908947.fasta .
+```
+
+
+```
+bwa index MN908947.fasta 
 ```
 
 This should of created a range of bwa index files (MN908947.fasta.amb/.ann/.bwt/.pac/.sa files), so list (```ls```) the contents of the directory to check:
 
 ```
-ls ~/SARS-CoV-2/
+ls 
 ```
 
 You only need to index a genome once, if you are aligning many samples to the same genome sequence (as we will be on this course) you do not need to re-run the reference index step; but don't confuse this step with the BAM indexing step which does need to be done for each sample.
@@ -515,7 +522,7 @@ Now we will align the reads from sample CVR2058 to the reference sequence using 
 
 
 ```
-bwa mem -t4 ~/SARS-CoV-2/MN908947.fasta CVR2058_R1.fastq CVR2058_R2.fastq > CVR2058.sam
+bwa mem -t4 MN908947.fasta /home/manager/SARS-CoV-2/Illumina/200703_M01569_0148_000000000-J53HN_Batch70/CVR2058_R1.fastq /home/manager/SARS-CoV-2/Illumina/200703_M01569_0148_000000000-J53HN_Batch70/CVR2058_R2.fastq > CVR2058.sam
 
 ```
 Breaking this command down:
@@ -523,7 +530,7 @@ Breaking this command down:
 * **bwa** = the name of the program
 * **mem** = the name of the bwa algorithm to use (it is recommended for reads > 70bp)
 * **-t4** = use 4 computational threads
-* **~/SARS-CoV-2/MN908947.fasta** = the path to the reference file (and index)
+* **MN908947.fasta** = the path to the reference file (and index)
 * **CVR2058_R1.fastq** = FASTQ read pair 1
 * **CVR2058_R2.fastq** = FASTQ read pair 2
 * **> CVR2058.sam** = direct the output into the file CVR2058.sam rather than to the command line
@@ -566,7 +573,7 @@ As we have used ARTIC amplicons, each read will typically start and end with a p
 To do this we use a tool called [ivar](https://andersen-lab.github.io/ivar/html/manualpage.html) which requires a [BED](https://software.broadinstitute.org/software/igv/BED) file containing the primer coordinates on the reference genome:
 
 ```
-ivar trim -i CVR2058.bam -b ~/artic-ncov2019/primer_schemes/nCoV-2019/V1/nCoV-2019.bed -p CVR2058_trim.bam
+ivar trim -i CVR2058.bam -b /home/manager/artic-ncov2019/primer_schemes/nCoV-2019/V1/nCoV-2019.bed -p CVR2058_trim.bam
 ```
 **NB:** Use **TAB Completion** to help enter the -b primer bed file!
 
@@ -704,7 +711,7 @@ Another approach when using [mafft](https://mafft.cbrc.jp/alignment/software/) i
 
 ## 4: SARS-CoV-2 Group Practical
 
-In this session, we will be working on some more Illumina paired end read data. The FASTQ data was downloaded from the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser) (ENA), and there are 4 samples in total in ```~/SARS-CoV-2/Group/``` (the samples are not related to one another), with R1 and R2 FASTQ files for each:
+In this session, we will be working on some more Illumina paired end read data. The FASTQ data was downloaded from the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser) (ENA), and there are 4 samples in total in ```/home/manager/SARS-CoV-2/Group/``` (the samples are not related to one another), with R1 and R2 FASTQ files for each:
 
 * ERR9105817 - ARTIC primer version 4.1
 * ERR9731990 - ARTIC primer version 4.1
@@ -714,7 +721,7 @@ In this session, we will be working on some more Illumina paired end read data. 
 The primer scheme to use is:
 
 ```
-~/artic-ncov2019/primer_schemes/nCoV-2019/V4.1/SARS-CoV-2.scheme.bed
+/home/manager/artic-ncov2019/primer_schemes/nCoV-2019/V4.1/SARS-CoV-2.scheme.bed
 ```
 
 Your task is to work as a group in the breakout rooms to analyse these samples. Initial read QC (with trim_galore) is not required (but you could add it if you wanted).  You should:
