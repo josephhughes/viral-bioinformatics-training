@@ -13,7 +13,7 @@
 What we have done so far was concerned with creating an overall consensus sequence, which will contain consensus level variants. Often, we are also interested in sub-consensus “low frequency” variants to investigate the viral swarm. We will use a tool called lofreq to call both high and low frequency variants in the BAM file with respective to out reference sequence:
 
 ```
-cd GECO_course_data/Reference_alignment
+cd Ref_tutorial
 ```
 ```
 lofreq call -f MN908947.fasta -o var.vcf Vero_SARS2.bam
