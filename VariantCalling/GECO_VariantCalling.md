@@ -15,6 +15,16 @@ What we have done so far was concerned with creating an overall consensus sequen
 ```
 cd Ref_tutorial
 ```
+Copy the reference file
+```
+cp /home/manager/GECO_course_data/Reference_alignment/*.fasta .
+```
+Copy the coding information file
+```
+cp /home/manager/GECO_course_data/Reference_alignment/*.txt .
+```
+
+
 ```
 lofreq call -f MN908947.fasta -o var.vcf Vero_SARS2.bam
 ```
