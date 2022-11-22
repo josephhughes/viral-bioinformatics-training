@@ -739,7 +739,25 @@ As a group you could:
 * Analyse a sample each and collate the results. As there are only 4 samples (and groups will likely be larger than 4) - multiple people could analyse a single sample and check you get the same results
 * Write a bash script to process the sample automatically. Remember all the steps to analyse a sample are the same, it is just the input/output names that are changing. 
 
+**Reminder from the bash scripting tutorial**
 
+```
+directory=$1
+ 
+for fq1 in ${directory}/*_R1.fq
+do
+  echo "this is the full path"
+  echo $fq1
+  echo "this is the basename"
+  name=$(basename $fq1) 
+  echo $name
+  fq2=${fq1%_R1.fq}_R2.fq
+  echo $fq2
+  samplename=${name%_R1.fq}
+  echo $samplename
+done
+
+```
 
 
 
