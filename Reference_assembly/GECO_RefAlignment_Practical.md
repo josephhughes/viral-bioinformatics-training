@@ -655,7 +655,7 @@ There are three other samples in the Illumina data directory:
 You should now choose atleast one sample to create a consensus sequence for yourself by running through the above steps, but adapting them for the next sample (you simply need to change the input read names, and the output file names from CVR2058 to your next sample name). A reminder that the commands used were:
 
 ```
-bwa mem -t4 ~/SARS-CoV-2/MN908947.fasta CVR2058_R1.fastq CVR2058_R2.fastq > CVR2058.sam
+bwa mem -t4 MN908947.fasta CVR2058_R1.fastq CVR2058_R2.fastq > CVR2058.sam
 ```
 
 ```
