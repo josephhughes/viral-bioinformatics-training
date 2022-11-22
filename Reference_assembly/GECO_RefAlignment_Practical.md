@@ -466,7 +466,7 @@ We do not need to use a conda environment as all the tools we need are already i
 First, lets look at the Illumina data directory:
 
 ```
-cd /home/manager/SARS-CoV-2/Illumina/200703_M01569_0148_000000000-J53HN_Batch70/
+ls /home/manager/SARS-CoV-2/Illumina/200703_M01569_0148_000000000-J53HN_Batch70/
 ```
 
 The data in this folder is from a run on an Illumina MiSeq machine. The name of the folder implies it was run on the 3rd July 2020 (200703), the machine ID is M01569, the run ID is 0148_000000000-J53HN, and this was called Batch70 locally within the [Medical Research Council-University of Glasgow Centre for Virus Research](https://www.gla.ac.uk/research/az/cvr/) (CVR) as part of a Covid-19 Genomics UK Consortium ([COG-UK](https://www.cogconsortium.uk)) sequencing run. The samples were sequenced using Version 1 (V1) of the ARTIC [nCoV-2019](https://github.com/artic-network/primer-schemes/tree/master/nCoV-2019) amplicon primers.
