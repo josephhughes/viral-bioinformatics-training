@@ -103,8 +103,7 @@ Now let's align the samples to our reference genome using bwa mem.
 Alignment is just one single step with **bwa mem**:
 
 ```
- bwa mem MN908947.fasta Vero_SARS2_R1_val_1.fq \
- Vero_SARS2_R2_val_2.fq > Vero_SARS2.sam
+ bwa mem MN908947.fasta Vero_SARS2_R1_val_1.fq Vero_SARS2_R2_val_2.fq > Vero_SARS2.sam
 ```
 
 ### 1.1.3: Manipulating your SAM file with SAMtools
@@ -338,9 +337,7 @@ cd ~/SARS-CoV-2/MinION_Results
 **artic guppyplex** - now we will run artic guppyplex on sample barcode06:
 
 ```
-artic guppyplex --skip-quality-check \
---min-length 400 --max-length 700 \
---directory ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06 --prefix cvr124a
+artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/SARS-CoV-2/MinION/20201229_1542_X1_FAO14190_c9e59aa7_Batch124A/fastq_pass/barcode06 --prefix cvr124a
 ```
 
 Breaking this command down:
