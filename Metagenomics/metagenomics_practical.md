@@ -96,7 +96,7 @@ First we need to sligthly reformat the kraken output with the following bash com
 
 ```
 
-cut -f2,3 SRR10168377_kraken.out > SRR10168377_kraken.kronainput
+/home/manager/Programs/kraken2-translate.pl SRR10168377_report.txt > SRR10168377_kraken.kronainput
 
 ```
 
@@ -106,7 +106,8 @@ Now let's make the Krona plots!
 
 ```
 
-ktImportTaxonomy -tax /db/kronatools/taxonomy SRR10168377_kraken.kronainput -o SRR10168377_krona.html
+ktImportText -o SRR10168377_krona.html SRR10168377_kraken.kronainput
+
 
 ```
 
