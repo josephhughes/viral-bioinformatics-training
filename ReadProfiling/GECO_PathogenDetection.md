@@ -51,7 +51,7 @@ For this practical, a reference database for viruses has been created and is sto
 Then run Kaiju which requires at least three arguments:
 
 ```
-~/Programs/kaiju/bin/kaiju -t ~/db/kaijudb/nodes.dmp -f ~/db/kaijudb/kaiju_db_viruses.fmi -i SRR1748193_pass_1.fastq.gz -j SRR1748193_pass_2.fastq.gz -o SRR1748193_kaiju.out
+/home/manager/Programs/kaiju/bin/kaiju -t /home/manager/db/kaijudb/nodes.dmp -f /home/manager/db/kaijudb/kaiju_db_viruses.fmi -i SRR1748193_pass_1.fastq.gz -j SRR1748193_pass_2.fastq.gz -o SRR1748193_kaiju.out
 ```
 
 * **-t** specifies the taxonomy hierarchy and is obtained from the NCBI taxonomy
@@ -61,7 +61,7 @@ Then run Kaiju which requires at least three arguments:
 Kaiju comes with a number of helper programs that can help to produce tables or figures to visualize the results. Here, we use kaiju2krona to convert Kaiju's tab-separated output file into a tab-separated text file, which can be imported into Krona. It requires the nodes.dmp and names.dmp files from the NCBI taxonomy for mapping the taxon identifiers from Kaiju's output to the corresponding taxon names.
 
 ```
-~/Programs/kaiju/bin/kaiju2krona -t ~/db/kaijudb/nodes.dmp -n ~/db/kaijudb/names.dmp -i SRR1748193_kaiju.out -o SRR1748193_kaiju.out.krona
+/home/manager/Programs/kaiju/bin/kaiju2krona -t /home/manager/db/kaijudb/nodes.dmp -n ~/db/kaijudb/names.dmp -i SRR1748193_kaiju.out -o SRR1748193_kaiju.out.krona
 ```
 
 The file ```SRR1748193_kaiju.out.krona``` can then be imported into Krona and converted into an HTML file using Krona's ktImportText program:
@@ -88,7 +88,7 @@ Kraken is a kmer based tool for metagenomics, it can give you an indication of w
 We are going to investigate the same SRR1748193 sample to find out if there are any viruses in it. First, we will run kraken against the Mini-Kraken database which is quick:
 
 ```
-kraken2 --db ~/db/kraken2/virus/ --quick --output SRR1748193_kraken.out \
+kraken2 --db /home/manager/db/kraken2/virus/ --quick --output SRR1748193_kraken.out \
 --report SRR1748193_report.txt \
 --paired SRR1748193_pass_1_val_1.fq.gz SRR1748193_pass_2_val_2.fq.gz
 ```
@@ -101,7 +101,7 @@ The file ```SRR1748193_report.txt``` provide a report with the number of reads m
 First we use a perl script to convert the kraken report into a format that is readable by krona:
 
 ```
-~/Programs/kraken2-translate.pl SRR1748193_report.txt > SRR1748193_kraken.krona.txt
+/home/manager/Programs/kraken2-translate.pl SRR1748193_report.txt > SRR1748193_kraken.krona.txt
 ```
 
 Now, we run the ```ktImportText``` command for creating the krona plot:
