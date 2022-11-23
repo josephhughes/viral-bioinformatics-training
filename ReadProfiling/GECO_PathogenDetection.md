@@ -100,7 +100,7 @@ We are going to investigate the same SRR1748193 sample to find out if there are 
 ```
 kraken2 --db /home/manager/db/kraken2/virus/ --quick --output SRR1748193_kraken.out \
 --report SRR1748193_report.txt \
---paired /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_1_val_1.fq.gz /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_2_val_2.fq.gz
+--paired /home/manager/GECO_course_data/Pathogen_detection/fastq/SRR1748193_pass_1_val_1.fq.gz /home/manager/GECO_course_data/Pathogen_detection/fastq/SRR1748193_pass_2_val_2.fq.gz
 ```
  
 This will create a kraken output file called ```SRR1748193_kraken.out```, which contains the taxonomic assignment of each read pair.
