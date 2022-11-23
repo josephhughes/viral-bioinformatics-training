@@ -46,12 +46,22 @@ The program is described in Menzel, P. et al. (2016) [Fast and sensitive taxonom
 
 The program can be obtained from [github](https://github.com/bioinformatics-centre/kaiju) and there is also a [webserver](https://kaiju.binf.ku.dk/server)
 
-For this practical, a reference database for viruses has been created and is stored in ```/home/manager/db/kaijudb```. First, navigate to the folder with the  ```cd ~/GECO_course_data/Pathogen_detection``` with the fastq files.
+For this practical, a reference database for viruses has been created and is stored in ```/home/manager/db/kaijudb```. First, look at the folder with the fastq files  ```ls /home/manager/GECO_course_data/Pathogen_detection```.
+
+Create a new dirctory
+```
+mkdir Readprofiling_tutorial
+```
+
+Go into the directory
+```
+cd Readprofiling_tutorial
+```
 
 Then run Kaiju which requires at least three arguments:
 
 ```
-/home/manager/Programs/kaiju/bin/kaiju -t /home/manager/db/kaijudb/nodes.dmp -f /home/manager/db/kaijudb/kaiju_db_viruses.fmi -i SRR1748193_pass_1.fastq.gz -j SRR1748193_pass_2.fastq.gz -o SRR1748193_kaiju.out
+/home/manager/Programs/kaiju/bin/kaiju -t /home/manager/db/kaijudb/nodes.dmp -f /home/manager/db/kaijudb/kaiju_db_viruses.fmi -i /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_1.fastq.gz -j /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_2.fastq.gz -o SRR1748193_kaiju.out
 ```
 
 * **-t** specifies the taxonomy hierarchy and is obtained from the NCBI taxonomy
@@ -90,7 +100,7 @@ We are going to investigate the same SRR1748193 sample to find out if there are 
 ```
 kraken2 --db /home/manager/db/kraken2/virus/ --quick --output SRR1748193_kraken.out \
 --report SRR1748193_report.txt \
---paired SRR1748193_pass_1_val_1.fq.gz SRR1748193_pass_2_val_2.fq.gz
+--paired /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_1_val_1.fq.gz /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_2_val_2.fq.gz
 ```
  
 This will create a kraken output file called ```SRR1748193_kraken.out```, which contains the taxonomic assignment of each read pair.
