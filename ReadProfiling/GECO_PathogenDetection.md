@@ -71,7 +71,7 @@ Then run Kaiju which requires at least three arguments:
 Kaiju comes with a number of helper programs that can help to produce tables or figures to visualize the results. Here, we use kaiju2krona to convert Kaiju's tab-separated output file into a tab-separated text file, which can be imported into Krona. It requires the nodes.dmp and names.dmp files from the NCBI taxonomy for mapping the taxon identifiers from Kaiju's output to the corresponding taxon names.
 
 ```
-/home/manager/Programs/kaiju/bin/kaiju2krona -t /home/manager/db/kaijudb/nodes.dmp -n ~/db/kaijudb/names.dmp -i SRR1748193_kaiju.out -o SRR1748193_kaiju.out.krona
+/home/manager/Programs/kaiju/bin/kaiju2krona -t /home/manager/db/kaijudb/nodes.dmp -n /home/manager/db/kaijudb/names.dmp -i SRR1748193_kaiju.out -o SRR1748193_kaiju.out.krona
 ```
 
 The file ```SRR1748193_kaiju.out.krona``` can then be imported into Krona and converted into an HTML file using Krona's ktImportText program:
