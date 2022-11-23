@@ -61,7 +61,7 @@ cd Readprofiling_tutorial
 Then run Kaiju which requires at least three arguments:
 
 ```
-/home/manager/Programs/kaiju/bin/kaiju -t /home/manager/db/kaijudb/nodes.dmp -f /home/manager/db/kaijudb/kaiju_db_viruses.fmi -i /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_1.fastq.gz -j /home/manager/GECO_course_data/Pathogen_detection/SRR1748193_pass_2.fastq.gz -o SRR1748193_kaiju.out
+/home/manager/Programs/kaiju/bin/kaiju -t /home/manager/db/kaijudb/nodes.dmp -f /home/manager/db/kaijudb/kaiju_db_viruses.fmi -i /home/manager/GECO_course_data/Pathogen_detection/fastq/SRR1748193_pass_1.fastq.gz -j /home/manager/GECO_course_data/Pathogen_detection/fastq/SRR1748193_pass_2.fastq.gz -o SRR1748193_kaiju.out
 ```
 
 * **-t** specifies the taxonomy hierarchy and is obtained from the NCBI taxonomy
