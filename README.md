@@ -23,6 +23,7 @@
 * [5: Visualization - Day 5](#5-day5)
 	+ [5.1: R visualization - the basics](R_visualization/1_basic.md)
 	+ [5.2: R visualization - advanced for publication-ready figures](R_visualization/2_advanced.md)
+	+ [5.3: Group practical](Group_practical.md)
 
 
 

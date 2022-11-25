@@ -172,7 +172,7 @@ Try the following command:
 
 ```
 
-pal2nal.pl al_sarbeco_Spikes.translated.fas sarbeco_Spikes.fas -output fasta > al_sarbeco_Spikes_cod.fas
+perl /home/manager/pal2nal.v14/pal2nal.pl al_sarbeco_Spikes.translated.fas sarbeco_Spikes.fas -output fasta > al_sarbeco_Spikes_cod.fas
 
 ```
 

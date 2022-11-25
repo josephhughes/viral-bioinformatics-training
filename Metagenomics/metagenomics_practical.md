@@ -96,7 +96,7 @@ First we need to sligthly reformat the kraken output with the following bash com
 
 ```
 
-cut -f2,3 SRR10168377_kraken.out > SRR10168377_kraken.kronainput
+/home/manager/Programs/kraken2-translate.pl SRR10168377_report.txt > SRR10168377_kraken.kronainput
 
 ```
 
@@ -106,7 +106,8 @@ Now let's make the Krona plots!
 
 ```
 
-ktImportTaxonomy -tax /db/kronatools/taxonomy SRR10168377_kraken.kronainput -o SRR10168377_krona.html
+ktImportText -o SRR10168377_krona.html SRR10168377_kraken.kronainput
+
 
 ```
 
@@ -295,7 +296,7 @@ of the whole genome sequence can be found in the `/home/manager/GECO_course_data
 metaQuast can be used as follows:
 
 ```
-metaquast.py -o quast_results/ -r MP789.fasta -m 100 -t 2 SRR10168377_abyss/SRR10168377_k49-1.fa SRR10168377_spades/contigs.fasta
+metaquast.py -o quast_results/ -r MP789.fasta -m 100 -t 2 SRR10168377_abyss/SRR10168377_k49-contigs.fa SRR10168377_spades/contigs.fasta
 ```
 Let's break this down: 
 
