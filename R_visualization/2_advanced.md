@@ -454,7 +454,7 @@ beast_tree_df <- fortify( beast_tree )
 
 mrca_tab <- read.table( file = "BA2_beast_tmrca.txt", header = T )
 
-meta <- read.table( file = "Metadata_PH.tsv", sep = "\t" )
+meta <- read.table( file = "Metadata_PH.tsv", sep = "\t" , header = T)
 
 geo_admin <- read.csv( file = "Geo_admin.csv", header = TRUE )
 ```
